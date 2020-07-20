@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 
 class MonthItem extends Component {
+  handleClick = () => {
+    alert(this.props.item.name);
+  };
+
   render() {
-    return <div>{this.props.item.name}</div>;
+    return <h2 onClick={this.handleClick}>{this.props.item.name}</h2>;
   }
 }
 
