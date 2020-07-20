@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import MonthList from '../MonthList/MonthList';
+import Header from '../Header/Header';
 
 class App extends Component {
   state = {
@@ -13,7 +14,7 @@ class App extends Component {
     this.getCalendar();
   }
 
-  getCalendar() {
+  getCalendar = () => {
     axios({
       method: 'GET',
       url: '/calendar',
@@ -27,19 +28,17 @@ class App extends Component {
       .catch((error) => {
         console.log('error during GET', error);
       });
-  }
+  };
 
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Select a Month</h1>
-          <h3>SELECTED MONTH GOES HERE</h3>
-          <br />
-        </header>
+        <Header calendar={this.state.calendar} />
         <br />
-        <p>List of months</p>
-        <MonthList calendar={this.state.calendar} />
+        <MonthList
+          calendar={this.state.calendar}
+          getCalendar={this.getCalendar}
+        />
       </div>
     );
   }

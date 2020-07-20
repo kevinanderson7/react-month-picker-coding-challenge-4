@@ -7,7 +7,7 @@ class MonthList extends Component {
       <div>
         {this.props.calendar.map((item) => (
           <div key={item.id}>
-            <MonthItem item={item} />
+            <MonthItem getCalendar={this.props.getCalendar} item={item} />
           </div>
         ))}
       </div>
